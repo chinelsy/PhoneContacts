@@ -15,10 +15,10 @@ namespace PhoneBookApp.Models
 
         public void AddContact(Contact contact)
         {
-            _contacts.Add(contact); 
+            _contacts.Add(contact);
         }
 
-        public void DisplayContact(int number)
+        public void DisplayContact(string number)
         {
             var contact = _contacts.FirstOrDefault(c => c.Number == number);
             if (contact == null)
@@ -50,5 +50,15 @@ namespace PhoneBookApp.Models
                 DisplayContactDetails(contact);
             }
         }
+
+        public void RemoveContact(string name)
+        {
+            var contactToRemove = _contacts.AsEnumerable().Where
+                (c => c.Name == name).First();
+            _contacts.Remove(contactToRemove);
+        }
+
+        
+            
     }
 }
